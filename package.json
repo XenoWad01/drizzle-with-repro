@@ -1,0 +1,26 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint --",
+    "lint:fix": "turbo run lint -- & prettier --write \"**/*.{ts,tsx,md}\"",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "storybook": "cd ./packages/bookd-ui && yarn run storybook",
+    "storybook:build": "cd ./packages/bookd-ui && storybook build",
+    "studio": "cd ./packages/bookd-api/ && yarn run studio && cd ../../",
+    "migration:generate": "cd ./packages/bookd-api/ && yarn run migration:generate && cd ../../",
+    "migration:push": "cd ./packages/bookd-api/ && yarn run migration:push && cd ../../"
+  },
+  "devDependencies": {
+    "eslint": "^8.48.0",
+    "prettier": "^3.0.3",
+    "tsconfig": "*",
+    "turbo": "^1.11.0"
+  },
+  "name": "bookd",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}

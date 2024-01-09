@@ -1,0 +1,1 @@
+ALTER TABLE "aditionalServiceInstance" DROP COLUMN IF EXISTS "isExternal";

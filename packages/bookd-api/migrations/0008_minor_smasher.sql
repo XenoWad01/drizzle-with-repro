@@ -1,0 +1,1 @@
+ALTER TABLE "aditionalServiceInstance" ADD COLUMN "isExternal" boolean DEFAULT false NOT NULL;

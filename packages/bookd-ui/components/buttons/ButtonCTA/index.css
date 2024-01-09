@@ -1,0 +1,50 @@
+
+@import '../../../styles/globals.css';
+
+.button-CTA {
+  /* max-width set to split content in 2 rows */
+  max-width: 70px;
+  color: var(--blue);
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: var(--ease-in-out);
+  cursor:pointer;
+  background-color: rgba(0,0,0,0);
+  border-radius: var(--button-border-radius);
+  padding-bottom: 5px;
+
+  &:active{
+    background-color: var(--grey) ;
+  }
+
+  &.padded {
+    padding-inline: var(--button-padding);
+  }
+
+  .button-text {
+    text-transform: uppercase;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: var(--font-weight-semi-bold);
+    font-size: var(--font-size-sm);
+    letter-spacing: 1px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+    margin-top: 2px;
+  }
+
+  .button-cta-icon {
+    margin-top: 5px;
+  }
+
+  &.disabled {
+    pointer-events: none;
+    color: var(--dark-grey);
+  }
+};
+
+
+

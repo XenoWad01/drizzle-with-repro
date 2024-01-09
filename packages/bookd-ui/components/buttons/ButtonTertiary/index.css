@@ -1,0 +1,30 @@
+@import '../../../styles/globals.css';
+
+.button-tertiary {
+  border-radius: var(--button-border-radius);
+  padding-inline: var(--button-padding);
+  cursor: pointer;
+  transition: var(--ease-in-out);
+  color:var(--blue);
+  border:none;
+  background-color: rgba(0, 0, 0, 0.0);
+  text-shadow: 0px, 4px, 4px, 0px rgba(0,0,0,0.75);
+
+  &:active {
+    background-color: var(--grey)
+  };
+
+  .button-text {
+    text-transform: uppercase;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: var(--font-weight-semi-bold);
+    font-size: var(--font-size-sm);
+    letter-spacing: 1px;
+  }
+  &.disabled {
+    pointer-events: none;
+    color:var(--dark-grey);
+    border:none;
+  }
+}
+  

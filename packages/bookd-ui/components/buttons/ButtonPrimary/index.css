@@ -1,0 +1,32 @@
+@import '../../../styles/globals.css';
+
+.button-primary {
+  border-radius: var(--button-border-radius);
+  border: none;
+  padding-inline: var(--button-padding);
+  box-shadow: var(--button-shadow);
+  cursor: pointer;
+  color: white;
+  background-color: var(--blue);
+  transition: var(--ease-in-out);
+
+  &:active {
+    background-color: var(--light-blue);
+  }
+
+  .button-text {
+    text-transform: uppercase;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: var(--font-weight-semi-bold);
+    font-size: var(--font-size-sm);
+    letter-spacing: 1px;
+  }
+  
+  &.disabled {
+    pointer-events: none;
+    background-color: var(--grey);
+    color: var(--dark-grey);
+  }
+}
+
+

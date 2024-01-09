@@ -1,0 +1,40 @@
+
+@import '../../../styles/globals.css';
+
+.button-with-icon {
+  border-radius: var(--button-border-radius);
+  color: var(--blue);
+  border:none;
+  padding-inline: var(--button-padding);
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  transition: var(--ease-in-out);
+  cursor:pointer;
+  background-color: rgba(0,0,0,0);
+
+  &:active{
+    background-color: var(--light-blue) ;
+  }
+
+  .button-text {
+    text-transform: uppercase;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: var(--font-weight-semi-bold);
+    font-size: var(--font-size-sm);
+    letter-spacing: 1px;
+    max-width: 70px;
+    text-wrap: wrap;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &.disabled {
+    pointer-events: none;
+    color: var(--dark-grey);
+    border:none;
+  }
+}
+  
+  
