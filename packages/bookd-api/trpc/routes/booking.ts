@@ -13,7 +13,7 @@ export const bookingRouter = router({
   // *************************
   // * () => Create booking  *
   // *************************
-  create: adminOnlyProcedure.input(z.object({
+  create: publicProcedure.input(z.object({
     startDate: z.string(),
     endDate: z.string(),
     note: z.string().optional(),
@@ -67,7 +67,8 @@ export const bookingRouter = router({
       }
     })
 
-    console.log("Now why in gods name does this return [] when in studio there clearely are task-instances????? ", bookinFromDb?.aditionalServiceInstances[0].taskInstances)
+    console.log("Now why in gods name does this return [] when in studio there clearely are task-instances?????")
+    console.log(" * taskInstances is -> ",bookinFromDb?.aditionalServiceInstances[0].taskInstances)
     return bookinFromDb
   }),
 

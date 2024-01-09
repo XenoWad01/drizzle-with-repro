@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { adminOnlyProcedure } from "../auth/procedures";
+import { adminOnlyProcedure, publicProcedure } from "../auth/procedures";
 import { router } from "../config";
 import { client } from "../../db/schema/client";
 import { TRPCError } from "@trpc/server";
@@ -12,7 +12,7 @@ export const clientRouter = router({
   // ************************
   // * () => Create client  *
   // ************************
-  create: adminOnlyProcedure.input(z.object({
+  create: publicProcedure.input(z.object({
     userData: z.object({
         email: z.string().email(),
         phone: z.string(),

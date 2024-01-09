@@ -17,8 +17,82 @@ const LoginFormValidationSchema = z.object({
   password: z.string(),
 });
 
+
+function makeRandomString(length) {
+  let result = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charactersLength = characters.length;
+  let counter = 0;
+  while (counter < length) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    counter += 1;
+  }
+  return result;
+}
+
 export const Login: FC = () => {
   const setLogin = useAuthStore((s) => s.setLogin);
+  const { mutateAsync: createAditionalServiceAsync } = trpc.aditionalService.create.useMutation()
+  const { mutateAsync: createBooking } = trpc.booking.create.useMutation()
+  const { mutateAsync: createClient } = trpc.client.create.useMutation()
+  useEffect(() => {
+    (async ()  => {
+
+      const newClient = await createClient({
+        userData: {
+          name: 'Admin User' + makeRandomString(10),
+          phone: '666' + makeRandomString(10),
+          password: 'password' + makeRandomString(10),
+          email: 'whatever@wh' + makeRandomString(10) + 'atever.com' 
+        },
+      })
+
+
+      const newAditionalService1 = await createAditionalServiceAsync({
+        name: 'aditionalService1' + makeRandomString(10),
+        price: 100,
+        tasks: [
+          {
+            name: 'task1' + makeRandomString(10),
+            isExternal: false,
+          },
+          {
+            name: 'task2' + makeRandomString(10),
+            isExternal: false,
+          },
+        ]
+      })
+      const newAditionalService2 = await createAditionalServiceAsync({
+        name: 'aditionalService2' + makeRandomString(10),
+        price: 100,
+        tasks: [
+          {
+            name: 'task3' + makeRandomString(10),
+            isExternal: false,
+          },
+          {
+            name: 'task4' + makeRandomString(10),
+            isExternal: false,
+          },
+        ]
+      })
+
+      const newBooking = await createBooking({
+        startDate: new Date().toISOString(),
+        endDate: new Date().toISOString(),
+        upfrontPaymentDueAt: new Date().toISOString(),
+        upfrontPaymentPrice: 100,
+        clientId: newClient.id,
+        aditionalServices: [newAditionalService1!.id, newAditionalService2!.id]
+      })
+
+
+
+    })()
+  }, [])
+
+
+
 
   const { mutateAsync: mutateLogin } = trpc.auth.login.useMutation({
     onSuccess: (data) => {

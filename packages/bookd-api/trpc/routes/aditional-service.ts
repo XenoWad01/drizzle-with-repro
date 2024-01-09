@@ -1,12 +1,12 @@
 import { z } from "zod";
-import { adminOnlyProcedure } from "../auth/procedures";
+import { adminOnlyProcedure, publicProcedure } from "../auth/procedures";
 import { router } from "../config";
 import { eq } from "drizzle-orm";
 import { aditionalService, task } from "../../db/schema";
 import { TRPCError } from "@trpc/server";
 
 export const aditionalServiceRouter = router({
-  create: adminOnlyProcedure
+  create: publicProcedure
     .input(z.object({ 
         name: z.string(),
         price: z.number().positive(),
